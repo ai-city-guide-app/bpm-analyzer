@@ -1,6 +1,10 @@
-add_library(catch2_amalgamated STATIC ../third_party/catch2/catch_amalgamated.cpp)
-target_include_directories(catch2_amalgamated PUBLIC ../third_party/catch2)
-target_compile_features(catch2_amalgamated PUBLIC cxx_std_17)
+include(FetchContent)
+FetchContent_Declare(
+    Catch2
+    GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+    GIT_TAG v3.5.4
+)
+FetchContent_MakeAvailable(Catch2)
 
 add_executable(bpmcore_tests
     test_onset_detector.cpp
@@ -8,7 +12,7 @@ add_executable(bpmcore_tests
     test_beat_tracker.cpp
     test_bpm_analyzer_synthetic.cpp
 )
-target_link_libraries(bpmcore_tests PRIVATE bpmcore catch2_amalgamated)
+target_link_libraries(bpmcore_tests PRIVATE bpmcore Catch2::Catch2WithMain)
 target_compile_definitions(bpmcore_tests PRIVATE
     BPMCORE_TEST_DATA_DIR="${CMAKE_CURRENT_SOURCE_DIR}/data"
 )
