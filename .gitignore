@@ -1,0 +1,9 @@
+build/
+core/tests/data/synthetic/
+
+# iOS: XcodeGen-generated project + Xcode/SPM build artifacts (not committed)
+ios/**/*.xcodeproj
+ios/**/.build/
+ios/**/DerivedData/
+ios/**/*.xcworkspace
+ios/BpmCoreKit/.swiftpm/
