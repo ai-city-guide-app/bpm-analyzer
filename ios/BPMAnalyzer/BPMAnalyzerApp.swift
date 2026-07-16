@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 @main
 struct BPMAnalyzerApp: App {
@@ -6,5 +7,6 @@ struct BPMAnalyzerApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: BpmMeasurement.self)
     }
 }
